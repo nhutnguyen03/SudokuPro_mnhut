@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sudoku</h1>
+        
+        <div class="game-options">
+            <select id="difficulty">
+                <option value="easy">Dễ</option>
+                <option value="medium">Trung bình</option>
+                <option value="hard">Khó</option>
+            </select>
+            <select id="level"></select>
+            <button id="newGame">Game mới</button>
+        </div>
+
+        <div class="game-info">
+            <div id="timer"><i class="fas fa-clock"></i> <span>00:00</span></div>
+            <div id="hints-container">
+                <span>Gợi ý: <span id="hintsLeft">3</span></span>
+                <button id="hint" title="Gợi ý"><i class="fas fa-lightbulb"></i></button>
+            </div>
+            <button id="pause" title="Tạm dừng"><i class="fas fa-pause"></i></button>
+        </div>
+
+        <div class="game-board">
+            <div id="board"></div>
+            <div class="number-pad">
+                <button class="num-btn" data-number="1">1</button>
+                <button class="num-btn" data-number="2">2</button>
+                <button class="num-btn" data-number="3">3</button>
+                <button class="num-btn" data-number="4">4</button>
+                <button class="num-btn" data-number="5">5</button>
+                <button class="num-btn" data-number="6">6</button>
+                <button class="num-btn" data-number="7">7</button>
+                <button class="num-btn" data-number="8">8</button>
+                <button class="num-btn" data-number="9">9</button>
+                <button class="num-btn" data-number="0">Xóa</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="pauseModal" class="modal">
+        <div class="modal-content">
+            <h2>Tạm dừng</h2>
+            <button id="resumeButton">Tiếp tục chơi</button>
+        </div>
+    </div>
+
+    <div id="completionModal" class="modal">
+        <div class="modal-content">
+            <h2>Chúc mừng!</h2>
+            <p>Bạn đã hoàn thành trong thời gian:</p>
+            <p id="completionTime" style="font-size: 2em; margin: 20px 0;"></p>
+            <button onclick="location.reload()">Chơi lại</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+    <script>
+        let game;
+        window.addEventListener('DOMContentLoaded', () => {
+            game = new SudokuGame();
+        });
+    </script>
+</body>
+</html>
